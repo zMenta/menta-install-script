@@ -4,3 +4,13 @@ With a terminal open on the folder containing the script.
 #+BEGIN_SRC bash
 bash installScript.sh
 #+END_SRC
+
+** Arguments
+Extra arguments to customize the installation.
+Ex:
+#+BEGIN_SRC bash
+bash installScript.sh no-latex
+#+END_SRC
+
+*** no-latex
+You can opt to don't install latex since texlive-full can be a bit large.
