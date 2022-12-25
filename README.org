@@ -1,0 +1,5 @@
+* Running the script
+
+#+BEGIN_SRC bash
+bash installScript.sh
+#+END_SRC
