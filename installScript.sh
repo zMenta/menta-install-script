@@ -1,13 +1,19 @@
 #!/bin/bash
 
-declare install_latex="yes"
-install_latex="$1"
+declare install_latex=1 #true
 
-if [[ $install_latex == "no-latex"  ]]; then
-    echo "Latex is not going to be installed"
-elif [[ $install_latex == "" ]]; then
-     echo "Running default script order"
-fi
+# Cycle through the variables passed
+while [ "$#" -gt 0 ]; do
+    argument="$1"
+
+    # Latex Download
+    if [[ $argument == "no-latex"  ]]; then
+        echo "Latex is not going to be installed"
+        install_latex=1
+    fi
+
+    shift
+done
 
 # sudo apt update -y
 # sudo apt upgrade -y
@@ -15,6 +21,9 @@ fi
 # sudo apt install vim -y
 # sudo apt install htop -y
 
-# echo "$install_latex"
+if [ $install_latex ]; then
+    #sudo apt install texlive-full -y
+    echo "texlive-full going to be installed"
+fi
 
 echo "Script finished running. All done."
