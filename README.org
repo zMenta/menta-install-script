@@ -13,6 +13,7 @@ bash installScript.sh
 
 ** Arguments
 Extra arguments to customize the installation.
+
 Ex:
 #+BEGIN_SRC bash
 bash installScript.sh no-latex
