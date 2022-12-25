@@ -18,6 +18,7 @@ done
 # sudo apt update -y
 # sudo apt upgrade -y
 
+# sudo apt install ripgrep -y
 # sudo apt install vim -y
 # sudo apt install htop -y
 # sudo apt install emacs -y
