@@ -14,3 +14,7 @@ bash installScript.sh no-latex
 
 *** no-latex
 You can opt to don't install latex since texlive-full can be a bit large.
+
+
+*** no-doom
+Don't install doom emacs.
