@@ -2,6 +2,7 @@
 
 declare install_latex=1 #true
 declare install_doom_emacs=1
+declare install_reveal_js=1
 
 # Cycle through the variables passed
 while [ "$#" -gt 0 ]; do
@@ -15,6 +16,10 @@ while [ "$#" -gt 0 ]; do
     # Doom Emacs Download
     if [[ $argument == "no-doom"  ]]; then
         install_doom_emacs=0
+    fi
+
+    if [[ $argument == "no-revealjs"  ]]; then
+        install_reveal_js=0
     fi
 
     shift
@@ -39,6 +44,18 @@ done
 
 if [ $install_latex ]; then
     #sudo apt install texlive-full -y
+    echo "texlive-full going to be installed"
+fi
+
+if [ $install_reveal_js ]; then
+    # Reveal JS and Dependencies
+    # -NodeJs
+    # curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
+    # sudo apt-get install -y nodejs
+    #
+    # -reveal js
+    #git clone https://github.com/hakimel/reveal.js.git
+    #cd reveal.js && npm install
     echo "texlive-full going to be installed"
 fi
 

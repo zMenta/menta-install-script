@@ -18,3 +18,9 @@ You can opt to don't install latex since texlive-full can be a bit large.
 
 *** no-doom
 Don't install doom emacs.
+
+*** no-revealjs
+Don't install reveal Js and it's dependecies
+
+Dependencies:
+  + NodeJs
