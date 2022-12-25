@@ -49,4 +49,7 @@ if [ $install_doom_emacs ]; then
     echo "doom emacs going to be installed"
 fi
 
+# sudo apt update -y
+# sudo apt upgrade -y
+
 echo "Script finished running. All done."
