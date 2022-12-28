@@ -9,8 +9,8 @@ Installs the tools and programs I use personally.
 Execute the following commands, it will download the script and execute the script.
 
 #+BEGIN_SRC bash
-git clone --depth 1 ttps://github.com/zMenta/menta-install-script.git ~/menta-install-script
-bash ~/menta-install-script/installScript
+git clone --depth 1 ttps://github.com/zMenta/menta-install-script.git ~/menta_install_script
+bash ~/menta_install_script/installScript
 #+END_SRC
 
 ** Arguments
@@ -18,7 +18,7 @@ Extra arguments to customize the installation.
 
 Example:
 #+BEGIN_SRC bash
-bash ~/menta-install-script/installScript no-latex no-revealjs
+bash ~/menta_install_script/installScript no-latex no-revealjs
 #+END_SRC
 
 *** no-latex
