@@ -4,6 +4,7 @@ declare install_latex=1 #true
 declare install_doom_emacs=1
 declare install_reveal_js=1
 declare install_doom_default=0
+declare godot_config=1
 
 # Cycle through the variables passed
 while [ "$#" -gt 0 ]; do
@@ -25,10 +26,12 @@ while [ "$#" -gt 0 ]; do
         install_doom_default=1
     fi
 
+    if [[ $argument == "no-godot"  ]]; then
+        godot_config=0
+    fi
+
     shift
 done
-
-mkdir ~/godot
 
 sudo apt update -y
 sudo apt upgrade -y
@@ -45,6 +48,11 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=
 sudo apt update -y
 sudo apt install brave-browser -y
 
+
+if [ $godot_config -eq 1 ]; then
+    mkdir ~/godot
+    # echo "godot"
+fi
 
 if [ $install_latex -eq 1 ]; then
     sudo apt install texlive-full -y
