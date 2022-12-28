@@ -56,8 +56,8 @@ if [ $install_reveal_js -eq 1 ]; then
     sudo apt-get install -y nodejs
 
     # -reveal js
-    git clone --depth 1 https://github.com/hakimel/reveal.js.git ~/.reveal.js
-    cd ~/.reveal.j && npm install
+    git clone --depth 1 https://github.com/hakimel/reveal.js.git ~/reveal.js
+    cd ~/reveal.j && npm install
     cd ~
     # echo "reveal js"
 fi
