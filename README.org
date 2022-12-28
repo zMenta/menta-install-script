@@ -5,9 +5,9 @@ Installs the tools and programs I use personally.
 
 
 * Usage
+** Installation
 Execute the following commands, it will download the script and execute the script.
 
-Installation:
 #+BEGIN_SRC bash
 git clone --depth 1 ttps://github.com/zMenta/menta-install-script.git ~/menta-install-script
 bash ~/menta-install-script/installScript
