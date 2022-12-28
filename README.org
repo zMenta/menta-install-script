@@ -9,7 +9,7 @@ Execute the following commands, it will download the script and execute the scri
 
 Installation:
 #+BEGIN_SRC bash
-git clone https://github.com/zMenta/menta-install-script.git ~/menta-install-script
+git clone --depth 1 ttps://github.com/zMenta/menta-install-script.git ~/menta-install-script
 bash ~/menta-install-script/installScript
 #+END_SRC
 
