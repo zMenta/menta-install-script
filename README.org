@@ -7,8 +7,11 @@ Installs the tools and programs I use personally.
 * Running the script
 With a terminal open on the folder containing the script.
 
+
+Installation:
 #+BEGIN_SRC bash
-bash installScript.sh
+git clone https://github.com/zMenta/menta-install-script.git ~/menta-install-script
+bash ~/menta-install-script
 #+END_SRC
 
 ** Arguments
