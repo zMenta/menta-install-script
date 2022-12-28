@@ -28,57 +28,57 @@ while [ "$#" -gt 0 ]; do
     shift
 done
 
-# sudo apt update -y
-# sudo apt upgrade -y
+sudo apt update -y
+sudo apt upgrade -y
 
-# sudo apt install ripgrep -y
-# sudo apt install vim -y
-# sudo apt install htop -y
-# sudo apt install emacs -y
+sudo apt install ripgrep -y
+sudo apt install vim -y
+sudo apt install htop -y
+sudo apt install emacs -y
 
 # Brave Browser
-# sudo apt install curl -y
-# sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-# echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-# sudo apt update -y
-# sudo apt install brave-browser -y
+sudo apt install curl -y
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+sudo apt update -y
+sudo apt install brave-browser -y
 
 
 if [ $install_latex -eq 1 ]; then
-    #sudo apt install texlive-full -y
-    echo "latex"
+    sudo apt install texlive-full -y
+    # echo "latex"
 fi
 
 if [ $install_reveal_js -eq 1 ]; then
     # Reveal JS and Dependencies
     # -NodeJs
-    # curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
-    # sudo apt-get install -y nodejs
-    #
+    curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
+    sudo apt-get install -y nodejs
+
     # -reveal js
-    #git clone --depth 1 https://github.com/hakimel/reveal.js.git ~/.reveal.js
-    #cd ~/.reveal.j && npm install
-    #cd ~
-    echo "reveal js"
+    git clone --depth 1 https://github.com/hakimel/reveal.js.git ~/.reveal.js
+    cd ~/.reveal.j && npm install
+    cd ~
+    # echo "reveal js"
 fi
 
 if [ $install_doom_emacs -eq 1 ]; then
-    # git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
-    # ~/.emacs.d/bin/doom install
-    echo "doom emacs"
+    git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
+    ~/.emacs.d/bin/doom install
+    # echo "doom emacs"
 fi
 
 if [ $install_doom_default -eq 0 ] && [ $install_doom_emacs -eq 1 ]; then
-    # git clone --depth 1 https://github.com/zMenta/DoomEmacsConfig-and-More.git ~/menta_install_script/doom-config
+    git clone --depth 1 https://github.com/zMenta/DoomEmacsConfig-and-More.git ~/menta_install_script/doom-config
 
-    # # Copies the files from my config files repo to doom emacs config folder.
-    # cp ~/menta_install_script/doom-config/DoomEmacs/config.el ~/.doom.d/config.el
-    # cp ~/menta_install_script/doom-config/DoomEmacs/init.el ~/.doom.d/init.el
-    # cp ~/menta_install_script/doom-config/DoomEmacs/packages.el ~/.doom.d/packages.el
-    echo "Installed menta doom config"
+    # Copies the files from my config files repo to doom emacs config folder.
+    cp ~/menta_install_script/doom-config/DoomEmacs/config.el ~/.doom.d/config.el
+    cp ~/menta_install_script/doom-config/DoomEmacs/init.el ~/.doom.d/init.el
+    cp ~/menta_install_script/doom-config/DoomEmacs/packages.el ~/.doom.d/packages.el
+    # echo "Installed menta doom config"
 fi
 
-# sudo apt update -y
-# sudo apt upgrade -y
+sudo apt update -y
+sudo apt upgrade -y
 
 echo "Script finished running. All done."
