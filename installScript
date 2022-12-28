@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# TODO create colored text progress
+# TODO modify bashrc file
+
+
 declare install_latex=1 #true
 declare install_doom_emacs=1
 declare install_reveal_js=1
