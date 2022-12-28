@@ -68,7 +68,6 @@ if [ $install_doom_emacs -eq 1 ]; then
     echo "doom emacs"
 fi
 
-# TODO apply my config files
 if [ $install_doom_default -eq 0 ] && [ $install_doom_emacs -eq 1 ]; then
     # git clone --depth 1 https://github.com/zMenta/DoomEmacsConfig-and-More.git ~/menta_install_script/doom-config
 
