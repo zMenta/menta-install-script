@@ -44,7 +44,7 @@ done
 
 if [ $install_latex ]; then
     #sudo apt install texlive-full -y
-    echo "texlive-full going to be installed"
+    echo "latex"
 fi
 
 if [ $install_reveal_js ]; then
@@ -54,16 +54,16 @@ if [ $install_reveal_js ]; then
     # sudo apt-get install -y nodejs
     #
     # -reveal js
-    #git clone https://github.com/hakimel/reveal.js.git
-    #cd reveal.js && npm install
-    echo "texlive-full going to be installed"
+    #git clone https://github.com/hakimel/reveal.js.git ~/.reveal.js
+    #cd ~/.reveal.j && npm install
+    #cd ~
+    echo "reveal js"
 fi
 
 if [ $install_doom_emacs ]; then
-    echo "Doom installation begins"
     # git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
     # ~/.emacs.d/bin/doom install
-    echo "doom emacs going to be installed"
+    echo "doom emacs"
 fi
 
 # sudo apt update -y
