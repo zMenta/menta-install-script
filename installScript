@@ -64,7 +64,7 @@ fi
 
 if [ $install_doom_emacs -eq 1 ]; then
     git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
-    ~/.emacs.d/bin/doom install
+    ~/.emacs.d/bin/doom install -!
     # echo "doom emacs"
 fi
 
