@@ -10,7 +10,7 @@ Execute the following commands, it will download the script and execute the scri
 Installation:
 #+BEGIN_SRC bash
 git clone https://github.com/zMenta/menta-install-script.git ~/menta-install-script
-bash ~/menta-install-script
+bash ~/menta-install-script/installScript
 #+END_SRC
 
 ** Arguments
@@ -18,7 +18,7 @@ Extra arguments to customize the installation.
 
 Example:
 #+BEGIN_SRC bash
-bash installScript.sh no-latex no-revealjs
+bash ~/menta-install-script/installScript no-latex no-revealjs
 #+END_SRC
 
 *** no-latex
