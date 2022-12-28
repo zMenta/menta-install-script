@@ -1,12 +1,12 @@
 * About
-    This is a bash script mainly for my debian enviroment.
+This is a bash script mainly for my debian enviroment.
 
-    Installs the tools and programs I use personally.
+Installs the tools and programs I use personally.
 
 
 * Usage
 ** Installation
-    Execute the following commands, it will download the script and execute the script.
+Execute the following commands, it will download the script and execute the script.
 
 #+BEGIN_SRC bash
 git clone --depth 1 https://github.com/zMenta/menta-install-script.git ~/menta_install_script
@@ -14,7 +14,7 @@ bash ~/menta_install_script/installScript
 #+END_SRC
 
 ** Arguments
-    Extra arguments to customize the installation.
+Extra arguments to customize the installation.
 
 Example:
 #+BEGIN_SRC bash
@@ -22,27 +22,29 @@ bash ~/menta_install_script/installScript no-latex no-revealjs
 #+END_SRC
 
 *** no-latex
-    You can opt to don't install latex since texlive-full can be a bit large.
+You can opt to don't install latex since texlive-full can be a bit large.
 
 
 *** no-doom
-    Don't install doom emacs.
+Don't install doom emacs.
 
 
 *** no-revealjs
-    Don't install reveal Js and it's dependecies
+Don't install reveal Js and it's dependecies
 
-    Dependencies:
-       + NodeJs
+Dependencies:
+    + NodeJs
 
 
 *** doom-default
-    Use default doom emacs configuration instead of my config files.
-    (Don't download and apply my config files)
+Use default doom emacs configuration instead of my config files.
+(Don't download and apply my config files)
 
+*** no-godot
+Don't create a godot engine directory.
 
 * Software List
-    List of software's this script downloads.
+List of software's this script downloads.
 
 + ripgrep
 + vim

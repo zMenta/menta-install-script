@@ -1,9 +1,30 @@
 #!/bin/bash
 
+# TODO modify bashrc file
+
+declare GREEN=2
+declare BLUE=4
+declare WHITE=7
+
+printtxt () {
+    local color=$1
+    local text=$2
+
+    echo
+    echo "$(tput setaf $color) $text $(tput setaf $WHITE)"
+}
+
+printdone () {
+
+    echo "$(tput setaf $GREEN) Done. $(tput setaf $WHITE)"
+    echo
+}
+
 declare install_latex=1 #true
 declare install_doom_emacs=1
 declare install_reveal_js=1
 declare install_doom_default=0
+declare godot_config=1
 
 # Cycle through the variables passed
 while [ "$#" -gt 0 ]; do
@@ -25,31 +46,58 @@ while [ "$#" -gt 0 ]; do
         install_doom_default=1
     fi
 
+    if [[ $argument == "no-godot"  ]]; then
+        godot_config=0
+    fi
+
     shift
 done
 
+printtxt $BLUE "Updating and upgrading the system"
 sudo apt update -y
 sudo apt upgrade -y
+printdone
 
+printtxt $BLUE "Installing ripgrep"
 sudo apt install ripgrep -y
+printdone
+
+printtxt $BLUE "Installing vim"
 sudo apt install vim -y
+printdone
+
+printtxt $BLUE "Installing htop"
 sudo apt install htop -y
+printdone
+
+printtxt $BLUE "Installing emacs"
 sudo apt install emacs -y
+printdone
 
 # Brave Browser
+printtxt $BLUE "Installing brave browser"
 sudo apt install curl -y
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 sudo apt update -y
 sudo apt install brave-browser -y
+printdone
 
+
+if [ $godot_config -eq 1 ]; then
+    printtxt $BLUE "Creating godot directory"
+    mkdir ~/godot
+    printdone
+fi
 
 if [ $install_latex -eq 1 ]; then
+    printtxt $BLUE "Installing latex"
     sudo apt install texlive-full -y
-    # echo "latex"
+    printdone
 fi
 
 if [ $install_reveal_js -eq 1 ]; then
+    printtxt $BLUE "Installing reveal.js"
     # Reveal JS and Dependencies
     # -NodeJs
     curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
@@ -59,26 +107,26 @@ if [ $install_reveal_js -eq 1 ]; then
     git clone --depth 1 https://github.com/hakimel/reveal.js.git ~/reveal.js
     cd ~/reveal.j && npm install
     cd ~
-    # echo "reveal js"
+    printdone
 fi
 
 if [ $install_doom_emacs -eq 1 ]; then
+    printtxt $BLUE "Installing Doom Emacs"
     git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
     ~/.emacs.d/bin/doom install -!
-    # echo "doom emacs"
+    printdone
 fi
 
 if [ $install_doom_default -eq 0 ] && [ $install_doom_emacs -eq 1 ]; then
+    printtxt $BLUE "Insttaling my doom config"
     git clone --depth 1 https://github.com/zMenta/DoomEmacsConfig-and-More.git ~/menta_install_script/doom-config
 
     # Copies the files from my config files repo to doom emacs config folder.
     cp ~/menta_install_script/doom-config/DoomEmacs/config.el ~/.doom.d/config.el
     cp ~/menta_install_script/doom-config/DoomEmacs/init.el ~/.doom.d/init.el
     cp ~/menta_install_script/doom-config/DoomEmacs/packages.el ~/.doom.d/packages.el
-    # echo "Installed menta doom config"
+    printdone
 fi
 
-sudo apt update -y
-sudo apt upgrade -y
-
-echo "Script finished running. All done."
+echo ""
+printtxt $GREEN "Script finished running. All done."
