@@ -118,7 +118,7 @@ if [ $install_doom_emacs -eq 1 ]; then
 fi
 
 if [ $install_doom_default -eq 0 ] && [ $install_doom_emacs -eq 1 ]; then
-    printtxt $BLUE "Insttaling my doom config"
+    printtxt $BLUE "Installing my doom config"
     git clone --depth 1 https://github.com/zMenta/DoomEmacsConfig-and-More.git ~/menta_install_script/doom-config
 
     # Copies the files from my config files repo to doom emacs config folder.
