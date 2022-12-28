@@ -14,9 +14,9 @@ bash installScript.sh
 ** Arguments
 Extra arguments to customize the installation.
 
-Ex:
+Example:
 #+BEGIN_SRC bash
-bash installScript.sh no-latex
+bash installScript.sh no-latex no-revealjs
 #+END_SRC
 
 *** no-latex
@@ -26,8 +26,13 @@ You can opt to don't install latex since texlive-full can be a bit large.
 *** no-doom
 Don't install doom emacs.
 
+
 *** no-revealjs
 Don't install reveal Js and it's dependecies
 
 Dependencies:
   + NodeJs
+
+
+*** doom-default
+Use default doom emacs configuration instead of my config files.
