@@ -38,3 +38,15 @@ Dependencies:
 
 *** doom-default
 Use default doom emacs configuration instead of my config files.
+
+
+* Software List
+List of software's this script downloads.
+
++ ripgrep
++ vim
++ htop
++ emacs + doom emacs + my personal config files
++ brave browser
++ latex (texlive-full)
++ nodeJs and revealjs
