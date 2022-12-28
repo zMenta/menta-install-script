@@ -38,6 +38,7 @@ Dependencies:
 
 *** doom-default
 Use default doom emacs configuration instead of my config files.
+(Don't download and apply my config files)
 
 
 * Software List
