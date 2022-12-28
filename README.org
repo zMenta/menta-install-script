@@ -4,9 +4,8 @@ This is a bash script mainly for my debian enviroment.
 Installs the tools and programs I use personally.
 
 
-* Running the script
-With a terminal open on the folder containing the script.
-
+* Usage
+Execute the following commands, it will download the script and execute the script.
 
 Installation:
 #+BEGIN_SRC bash
