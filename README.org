@@ -9,7 +9,6 @@ Installs the tools and programs I use personally.
 Execute the following commands, it will download the script and execute the script.
 
 *Warning*: The quick install it will add a few configuration lines to the .bashrc file. If you don't want that, use the /no-bashrc-config/ flag
-
 Quick Install:
 #+BEGIN_SRC bash
 git clone --depth 1 https://github.com/zMenta/menta-install-script.git ~/menta_install_script
