@@ -8,13 +8,16 @@ Installs the tools and programs I use personally.
 ** Installation
 Execute the following commands, it will download the script and execute the script.
 
+*Warning*: The quick install it will add a few configuration lines to the .bashrc file. If you don't want that, use the /no-bashrc-config/ flag
+
+Quick Install:
 #+BEGIN_SRC bash
 git clone --depth 1 https://github.com/zMenta/menta-install-script.git ~/menta_install_script
 bash ~/menta_install_script/installScript
 #+END_SRC
 
-** Arguments
-Extra arguments to customize the installation.
+** Flags
+Extra flags to customize the installation.
 
 Example:
 #+BEGIN_SRC bash
@@ -42,6 +45,24 @@ Use default doom emacs configuration instead of my config files.
 
 *** no-godot
 Don't create a godot engine directory.
+
+*** no-bashrc-config
+Dont't insert configuration lines automatically to the .bashrc file depeding on the package installed.
+
+
+It will add the following lines to .bashrc file by each package installed:
+
++ Doom emacs
+  * export PATH="$HOME/.emacs.d/bin:$PATH"
+
+
++ Godot
+  * export PATH="$HOME/godot:$PATH"
+
+
++ Default:
+  * alias emacs="emacsclient -c -a ''"
+
 
 * Software List
 List of software's this script downloads.

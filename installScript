@@ -25,6 +25,8 @@ declare install_doom_emacs=1
 declare install_reveal_js=1
 declare install_doom_default=0
 declare godot_config=1
+declare bashrc_config=1
+declare bashrc_commands='\nalias emacs="emacsclient -c -a ''""'
 
 # Cycle through the variables passed
 while [ "$#" -gt 0 ]; do
@@ -48,6 +50,10 @@ while [ "$#" -gt 0 ]; do
 
     if [[ $argument == "no-godot"  ]]; then
         godot_config=0
+    fi
+
+    if [[ $argument == "no-bashrc-config"  ]]; then
+        bashrc_config=0
     fi
 
     shift
@@ -87,6 +93,7 @@ printdone
 if [ $godot_config -eq 1 ]; then
     printtxt $BLUE "Creating godot directory"
     mkdir ~/godot
+    bashrc_commands+='\nexport PATH="$HOME/godot:$PATH"'
     printdone
 fi
 
@@ -114,6 +121,7 @@ if [ $install_doom_emacs -eq 1 ]; then
     printtxt $BLUE "Installing Doom Emacs"
     git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
     ~/.emacs.d/bin/doom install -!
+    bashrc_commands+='\nexport PATH="$HOME/.emacs.d/bin:$PATH"'
     printdone
 fi
 
@@ -128,5 +136,10 @@ if [ $install_doom_default -eq 0 ] && [ $install_doom_emacs -eq 1 ]; then
     printdone
 fi
 
-echo ""
+if [ $bashrc_config -eq 1 ]; then
+    printtxt $BLUE "Applying bashrc config"
+    sudo sed -i "3i\\$bashrc_commands" ~/.bashrc
+    printdone
+fi
+
 printtxt $GREEN "Script finished running. All done."
