@@ -1,10 +1,7 @@
 #!/bin/bash
 
-# TODO create a better solution for the .bashrc file configuration. PROBLEM: the script will keep adding config lines and pile up on the same configs over and over.
-
 declare GREEN=2
 declare BLUE=4
-declare MAGENTA=5
 declare WHITE=7
 
 printtxt () {
@@ -31,7 +28,12 @@ declare godot_config=1
 declare bashrc_config=1
 
 # Bashrc related variables
-declare bashrc_commands='\nalias emacs="emacsclient -c -a '"''"'"'
+declare emacs_bashrc='alias emacs="emacsclient -c -a '"''"'"'
+declare godot_bashrc='export PATH="$HOME/godot:$PATH"'
+declare doom_bashrc='export PATH="$HOME/.emacs.d/bin:$PATH"'
+
+declare bashrc_commands=("")
+declare bashrc_log=("")
 
 
 # Cycle through the flags
@@ -97,9 +99,13 @@ printdone
 
 
 if [ $godot_config -eq 1 ]; then
-    printtxt $BLUE "Creating godot directory"
+    printtxt $BLUE "Started Godot Config"
     mkdir ~/godot
-    bashrc_commands+='\nexport PATH="$HOME/godot:$PATH"'
+    if grep -Fxq "$godot_bashrc" ~/.bashrc; then
+        bashrc_log+=( "Godot configuration is already in ~/.bashrc" )
+    else
+        bashrc_commands+=("$godot_bashrc")
+    fi
     printdone
 fi
 
@@ -127,7 +133,11 @@ if [ $install_doom_emacs -eq 1 ]; then
     printtxt $BLUE "Installing Doom Emacs"
     git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
     ~/.emacs.d/bin/doom install -!
-    bashrc_commands+='\nexport PATH="$HOME/.emacs.d/bin:$PATH"'
+    if grep -Fxq "$doom_bashrc" ~/.bashrc; then
+        bashrc_log+=( "Doom emacs configuration is already in ~/.bashrc" )
+    else
+        bashrc_commands+=("$doom_bashrc")
+    fi
     printdone
 fi
 
@@ -144,9 +154,28 @@ fi
 
 if [ $bashrc_config -eq 1 ]; then
     printtxt $BLUE "Applying bashrc config"
-    bashrc_commands+='\n'
-    sudo sed -i "4i\\$bashrc_commands" ~/.bashrc
+    if grep -Fxq "$emacs_bashrc" ~/.bashrc; then
+        bashrc_log+=( "Emacs configuration is already in ~/.bashrc" )
+    else
+        bashrc_commands+=("$emacs_bashrc")
+    fi
+
+    # Write the configs in the ~/.bashrc file
+    for config in "${bashrc_commands[@]}"; do
+        sudo sed -i "4i\\$config" ~/.bashrc
+    done
+
+    #Print bashrc_log
+    for log in "${bashrc_log[@]}"; do
+        echo $log
+    done
     printdone
 fi
 
 printtxt $GREEN "Script finished running. All done."
+
+if [ $install_doom_emacs -eq 1 ]; then
+    printtxt $WHITE "Don't forget to run 'doom sync' to apply the configuration in Doom emacs!"
+fi
+
+echo ""
