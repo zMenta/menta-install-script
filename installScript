@@ -2,7 +2,6 @@
 
 declare GREEN=2
 declare BLUE=4
-declare MAGENTA=5
 declare WHITE=7
 
 printtxt () {
@@ -176,5 +175,7 @@ fi
 printtxt $GREEN "Script finished running. All done."
 
 if [ $install_doom_emacs -eq 1 ]; then
-    printtxt $MAGENTA "Don't forget to run 'doom sync' to apply the configuration in Doom emacs!"
+    printtxt $WHITE "Don't forget to run 'doom sync' to apply the configuration in Doom emacs!"
 fi
+
+echo ""
