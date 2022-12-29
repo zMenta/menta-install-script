@@ -52,16 +52,16 @@ Dont't insert configuration lines automatically to the .bashrc file depeding on 
 
 It will add the following lines to .bashrc file based on each package:
 
++ Default:
+  * alias emacs="emacsclient -c -a ''"
+
+
 + Doom emacs
   * export PATH="$HOME/.emacs.d/bin:$PATH"
 
 
 + Godot
   * export PATH="$HOME/godot:$PATH"
-
-
-+ Default:
-  * alias emacs="emacsclient -c -a ''"
 
 
 * Software List
