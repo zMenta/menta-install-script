@@ -21,7 +21,7 @@ Extra flags to customize the installation.
 
 Example:
 #+BEGIN_SRC bash
-bash ~/menta_install_script/installScript no-latex no-revealjs
+bash ~/menta_install_script/installScript no-latex d-revealjs
 #+END_SRC
 
 *** no-latex
