@@ -44,7 +44,7 @@ Use default doom emacs configuration instead of my config files.
 (Don't download and apply my config files)
 
 *** no-godot
-Don't create a godot engine directory.
+Don't create a godot engine directory on the home directory.
 
 *** no-bashrc-config
 Dont't insert configuration lines automatically to the .bashrc file depeding on the packages installed.
