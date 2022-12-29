@@ -47,10 +47,10 @@ Use default doom emacs configuration instead of my config files.
 Don't create a godot engine directory.
 
 *** no-bashrc-config
-Dont't insert configuration lines automatically to the .bashrc file depeding on the package installed.
+Dont't insert configuration lines automatically to the .bashrc file depeding on the packages installed.
 
 
-It will add the following lines to .bashrc file by each package installed:
+It will add the following lines to .bashrc file based on each package:
 
 + Doom emacs
   * export PATH="$HOME/.emacs.d/bin:$PATH"
