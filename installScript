@@ -22,7 +22,7 @@ printdone () {
 # 1 == true
 declare install_latex=1
 declare install_doom_emacs=1
-declare install_reveal_js=1
+declare install_reveal_js=0
 declare install_doom_default=0
 declare godot_config=1
 declare bashrc_config=1
@@ -48,8 +48,8 @@ while [ "$#" -gt 0 ]; do
         install_doom_emacs=0
     fi
 
-    if [[ $argument == "no-revealjs"  ]]; then
-        install_reveal_js=0
+    if [[ $argument == "d-revealjs"  ]]; then
+        install_reveal_js=1
     fi
 
     if [[ $argument == "doom-default"  ]]; then
@@ -123,8 +123,8 @@ if [ $install_reveal_js -eq 1 ]; then
     sudo apt-get install -y nodejs
 
     # -reveal js
-    git clone --depth 1 https://github.com/hakimel/reveal.js.git ~/reveal.js
-    cd ~/reveal.j && npm install
+    git clone --depth 1 https://github.com/hakimel/reveal.js.git ~/.reveal.js
+    cd ~/.reveal.j && npm install
     cd ~
     printdone
 fi
