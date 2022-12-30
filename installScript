@@ -1,5 +1,6 @@
 #!/bin/bash
 
+declare RED=1
 declare GREEN=2
 declare BLUE=4
 declare WHITE=7
@@ -40,28 +41,40 @@ declare bashrc_log=("")
 while [ "$#" -gt 0 ]; do
     argument="$1"
 
-    if [[ $argument == "no-latex"  ]]; then
+    if [[ $argument == "help" ]]; then
+        printtxt $BLUE "You called for help!"
+        printtxt $WHITE "Check the github page documentatioon for instructions and script flags."
+        echo ""
+        exit 1
+
+    elif [[ $argument == "no-latex"  ]]; then
         install_latex=0
-    fi
 
-    if [[ $argument == "no-doom"  ]]; then
+    elif [[ $argument == "no-doom"  ]]; then
         install_doom_emacs=0
-    fi
 
-    if [[ $argument == "d-revealjs"  ]]; then
+
+    elif [[ $argument == "d-revealjs"  ]]; then
         install_reveal_js=1
-    fi
 
-    if [[ $argument == "doom-default"  ]]; then
+
+    elif [[ $argument == "doom-default"  ]]; then
         install_doom_default=1
-    fi
 
-    if [[ $argument == "no-godot"  ]]; then
+
+    elif [[ $argument == "no-godot"  ]]; then
         godot_config=0
-    fi
 
-    if [[ $argument == "no-bashrc-config"  ]]; then
+
+    elif [[ $argument == "no-bashrc-config"  ]]; then
         bashrc_config=0
+    else
+        printtxt $RED "Invalid script flag of -> $argument"
+        printtxt $WHITE "Use the 'help' flag to get more information about script flags."
+        echo " -> bash installScript help"
+        echo ""
+        # exit code 128 = Invalid argument to exit
+        exit 128
     fi
 
     shift
