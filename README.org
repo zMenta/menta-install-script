@@ -1,8 +1,14 @@
+* Table of content's
++ [[About]]
++ [[Usage]]
+  * [[Installation]]
+  * [[Flags]]
++ [[Software List]]
+
 * About
 This is a bash script mainly for my debian enviroment.
 
 Installs the tools and programs I use personally.
-
 
 * Usage
 ** Installation
