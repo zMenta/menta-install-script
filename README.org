@@ -1,5 +1,5 @@
 * Table of content's
-+ [[About]]
++ [[https://github.com/zMenta/menta-install-script#about][About]]
 + [[Usage]]
   * [[Installation]]
   * [[Flags]]
