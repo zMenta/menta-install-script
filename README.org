@@ -1,9 +1,9 @@
 * Table of content's
 + [[https://github.com/zMenta/menta-install-script#about][About]]
-+ [[Usage]]
-  * [[Installation]]
-  * [[Flags]]
-+ [[Software List]]
++ [[https://github.com/zMenta/menta-install-script#usage][Usage]]
+  * [[https://github.com/zMenta/menta-install-script#installation][Installation]]
+  * [[https://github.com/zMenta/menta-install-script#flags][Flags]]
++ [[https://github.com/zMenta/menta-install-script#software-list][Software List]]
 
 * About
 This is a bash script mainly for my debian enviroment.
