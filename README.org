@@ -37,7 +37,7 @@ bash ~/menta_install_script/installScript no-latex d-revealjs
 
 + *d-revealjs*
 
-    (download-revealjs) Install reveal Js and it's dependecies
+    (download-revealjs) Install reveal Js locally and it's dependecies
 
     Dependencies:
         + NodeJs
