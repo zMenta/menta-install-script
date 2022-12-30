@@ -85,4 +85,4 @@ List of software's this script downloads.
 + emacs + doom emacs + my personal config files
 + brave browser
 + latex (texlive-full)
-+ nodeJs and revealjs
++ nodeJs + revealjs
