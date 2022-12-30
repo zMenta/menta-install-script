@@ -43,7 +43,18 @@ while [ "$#" -gt 0 ]; do
 
     if [[ $argument == "help" ]]; then
         printtxt $BLUE "You called for help!"
-        printtxt $WHITE "Check the github page documentatioon for instructions and script flags."
+        echo "   Check the github page documentation for complete instructions and script flags."
+        echo ""
+        echo "Flags:"
+        printtxt $WHITE "Flag usage example -> bash installScript no-latex d-revealjs"
+        echo ""
+        echo "  1. no-latex"
+        echo "  2. no-doom"
+        echo "  3. d-revealjs"
+        echo "  4. doom-default"
+        echo "  5. no-godot"
+        echo "  6. no-bashrc-config"
+        echo "  7. help"
         echo ""
         exit 1
 

@@ -58,12 +58,16 @@ bash ~/menta_install_script/installScript no-latex d-revealjs
 
     It will add the following lines to .bashrc file based on each package:
 
-    + Default
-      * alias emacs="emacsclient -c -a ''"
-    + Doom emacs
-      * export PATH="$HOME/.emacs.d/bin:$PATH"
-    + Godot
-      * export PATH="$HOME/godot:$PATH"
+  + Default
+    * alias emacs="emacsclient -c -a ''"
+  + Doom emacs
+    * export PATH="$HOME/.emacs.d/bin:$PATH"
+  + Godot
+    * export PATH="$HOME/godot:$PATH"
+\\
++ help
+
+    Get help in the terminal console.
 
 \\
 * Software List
