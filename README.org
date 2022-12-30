@@ -23,47 +23,49 @@ Example:
 #+BEGIN_SRC bash
 bash ~/menta_install_script/installScript no-latex d-revealjs
 #+END_SRC
+\\
 
-*** no-latex
-You can opt to don't install latex since texlive-full can be a bit large.
++ *no-latex*
 
+    You can opt to don't install latex since texlive-full can be a bit large.
+\\
 
-*** no-doom
-Don't install doom emacs.
++ *no-doom*
 
+    Don't install doom emacs.
+\\
 
-*** d-revealjs
-(download-revealjs) Install reveal Js and it's dependecies
++ *d-revealjs*
 
-Dependencies:
-    + NodeJs
+    (download-revealjs) Install reveal Js and it's dependecies
 
+    Dependencies:
+        + NodeJs
+\\
 
-*** doom-default
-Use default doom emacs configuration instead of my config files.
-(Don't download and apply my config files)
++ *doom-default*
 
-*** no-godot
-Don't create a godot engine directory on the home directory.
+    Use default doom emacs configuration instead of my config files.
+    (Don't download and apply my config files)
+\\
++ no-godot
 
-*** no-bashrc-config
-Dont't insert configuration lines automatically to the .bashrc file depeding on the packages installed.
+    Don't create a godot engine directory on the home directory.
+\\
++ no-bashrc-config
 
+    Dont't insert configuration lines automatically to the .bashrc file depeding on the packages installed.
 
-It will add the following lines to .bashrc file based on each package:
+    It will add the following lines to .bashrc file based on each package:
 
-+ Default:
-  * alias emacs="emacsclient -c -a ''"
+    + Default
+      * alias emacs="emacsclient -c -a ''"
+    + Doom emacs
+      * export PATH="$HOME/.emacs.d/bin:$PATH"
+    + Godot
+      * export PATH="$HOME/godot:$PATH"
 
-
-+ Doom emacs
-  * export PATH="$HOME/.emacs.d/bin:$PATH"
-
-
-+ Godot
-  * export PATH="$HOME/godot:$PATH"
-
-
+\\
 * Software List
 List of software's this script downloads.
 
