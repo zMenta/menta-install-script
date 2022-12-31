@@ -35,7 +35,7 @@ declare emacs_bashrc='alias emacs="emacsclient -c -a '"''"'"'
 declare godot_bashrc='export PATH="$HOME/godot:$PATH"'
 declare doom_bashrc='export PATH="$HOME/.emacs.d/bin:$PATH"'
 
-declare bashrc_commands=("")
+declare bashrc_commands=()
 declare bashrc_log=("")
 
 
@@ -208,7 +208,8 @@ if [ $bashrc_config -eq 1 ]; then
 
     # Write the configs in the ~/.bashrc file
     for config in "${bashrc_commands[@]}"; do
-        sudo sed -i "4i\\$config" ~/.bashrc
+        # sudo sed -i "4i\\$config" ~/.bashrc
+        sudo echo "$config" >> ~/.bashrc
     done
 
     #Print bashrc_log
