@@ -27,6 +27,7 @@ declare install_reveal_js=0
 declare install_doom_default=0
 declare godot_config=1
 declare bashrc_config=1
+declare install_rust=1
 
 # Bashrc related variables
 declare emacs_bashrc='alias emacs="emacsclient -c -a '"''"'"'
@@ -54,7 +55,9 @@ while [ "$#" -gt 0 ]; do
         echo "  4. doom-default"
         echo "  5. no-godot"
         echo "  6. no-bashrc-config"
-        echo "  7. help"
+        echo "  7. no-rust"
+        echo "  8. no-brave"
+        echo "  9. help"
         echo ""
         exit 1
 
@@ -79,6 +82,10 @@ while [ "$#" -gt 0 ]; do
 
     elif [[ $argument == "no-bashrc-config"  ]]; then
         bashrc_config=0
+
+    elif [[ $argument == "no-bashrc-config"  ]]; then
+        install_rust=0
+
     else
         printtxt $RED "Invalid script flag of -> $argument"
         printtxt $WHITE "Use the 'help' flag to get more information about script flags."
@@ -128,6 +135,7 @@ if [ $godot_config -eq 1 ]; then
     if grep -Fxq "$godot_bashrc" ~/.bashrc; then
         bashrc_log+=( "Godot configuration is already in ~/.bashrc" )
     else
+        bashrc_log+=( "Inserted Godot configuration is ~/.bashrc" )
         bashrc_commands+=("$godot_bashrc")
     fi
     printdone
@@ -161,6 +169,7 @@ if [ $install_doom_emacs -eq 1 ]; then
         bashrc_log+=( "Doom emacs configuration is already in ~/.bashrc" )
     else
         bashrc_commands+=("$doom_bashrc")
+        bashrc_log+=( "Inserted Doom emacs configuration is ~/.bashrc" )
     fi
     printdone
 fi
@@ -176,12 +185,19 @@ if [ $install_doom_default -eq 0 ] && [ $install_doom_emacs -eq 1 ]; then
     printdone
 fi
 
+if [ $install_rust -eq 1 ]; then
+    printtxt $BLUE "Installing Rust"
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    printdone
+fi
+
 if [ $bashrc_config -eq 1 ]; then
     printtxt $BLUE "Applying bashrc config"
     if grep -Fxq "$emacs_bashrc" ~/.bashrc; then
         bashrc_log+=( "Emacs configuration is already in ~/.bashrc" )
     else
         bashrc_commands+=("$emacs_bashrc")
+        bashrc_log+=( "Inserted Emacs configuration is ~/.bashrc" )
     fi
 
     # Write the configs in the ~/.bashrc file
