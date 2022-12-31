@@ -28,6 +28,7 @@ declare install_doom_default=0
 declare godot_config=1
 declare bashrc_config=1
 declare install_rust=1
+declare install_brave=1
 
 # Bashrc related variables
 declare emacs_bashrc='alias emacs="emacsclient -c -a '"''"'"'
@@ -79,12 +80,14 @@ while [ "$#" -gt 0 ]; do
     elif [[ $argument == "no-godot"  ]]; then
         godot_config=0
 
-
     elif [[ $argument == "no-bashrc-config"  ]]; then
         bashrc_config=0
 
-    elif [[ $argument == "no-bashrc-config"  ]]; then
+    elif [[ $argument == "no-rust"  ]]; then
         install_rust=0
+
+    elif [[ $argument == "no-brave"  ]]; then
+        install_brave=0
 
     else
         printtxt $RED "Invalid script flag of -> $argument"
@@ -119,14 +122,17 @@ printtxt $BLUE "Installing emacs"
 sudo apt install emacs -y
 printdone
 
-# Brave Browser
-printtxt $BLUE "Installing brave browser"
-sudo apt install curl -y
-sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-sudo apt update -y
-sudo apt install brave-browser -y
-printdone
+
+if [ $install_brave -eq 1 ]; then
+    # Brave Browser
+    printtxt $BLUE "Installing brave browser"
+    sudo apt install curl -y
+    sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+    echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+    sudo apt update -y
+    sudo apt install brave-browser -y
+    printdone
+fi
 
 
 if [ $godot_config -eq 1 ]; then
