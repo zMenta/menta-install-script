@@ -70,6 +70,19 @@ bash ~/menta_install_script/installScript no-latex d-revealjs
     * export PATH="$HOME/.emacs.d/bin:$PATH"
   + Godot
     * export PATH="$HOME/godot:$PATH"
+
+\\
++ no-rust
+
+    Don't install rustup.
+
+    *Note*: rustup installation modifies the .bashrc file by default.
+
+\\
++ no-brave
+
+  Dont't install brave browser.
+
 \\
 + help
 
@@ -86,3 +99,4 @@ List of software's this script downloads.
 + brave browser
 + latex (texlive-full)
 + nodeJs + revealjs
++ rust programming language
