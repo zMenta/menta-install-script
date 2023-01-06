@@ -98,6 +98,7 @@ bash ~/menta_install_script/installScript no-latex d-revealjs
 List of software's this script downloads.
 
 + ripgrep
++ fd-find
 + vim
 + htop
 + emacs + doom emacs + my personal config files

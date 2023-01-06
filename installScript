@@ -115,6 +115,10 @@ printtxt $BLUE "Installing ripgrep"
 sudo apt install ripgrep -y
 printdone
 
+printtxt $BLUE "Installing fd-find"
+sudo apt install fd-find -y
+printdone
+
 printtxt $BLUE "Installing vim"
 sudo apt install vim -y
 printdone
