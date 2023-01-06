@@ -137,6 +137,7 @@ if [ $install_emacs -eq 1  ]; then
 
     mkdir ~/menta_install_script/emacs
 
+    # TODO Make the VERSION an option flag on the script.
   # 1.  Obtain and unpack the Emacs release, with commands like this:
 
   #   	 wget https://ftp.gnu.org/gnu/emacs/emacs-VERSION.tar.xz
