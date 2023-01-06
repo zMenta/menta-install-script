@@ -84,6 +84,11 @@ bash ~/menta_install_script/installScript no-latex d-revealjs
   Dont't install brave browser.
 
 \\
++ no-emacs
+
+  Don't install emacs package.
+
+\\
 + help
 
     Get help in the terminal console.

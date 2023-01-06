@@ -29,6 +29,7 @@ declare godot_config=1
 declare bashrc_config=1
 declare install_rust=1
 declare install_brave=1
+declare install_emacs=1
 
 # Bashrc related variables
 declare emacs_bashrc='alias emacs="emacsclient -c -a '"''"'"'
@@ -58,7 +59,8 @@ while [ "$#" -gt 0 ]; do
         echo "  6. no-bashrc-config"
         echo "  7. no-rust"
         echo "  8. no-brave"
-        echo "  9. help"
+        echo "  9. no-emacs"
+        echo "  10. help"
         echo ""
         exit 1
 
@@ -89,6 +91,9 @@ while [ "$#" -gt 0 ]; do
     elif [[ $argument == "no-brave"  ]]; then
         install_brave=0
 
+    elif [[ $argument == "no-emacs"  ]]; then
+        install_emacs=0
+
     else
         printtxt $RED "Invalid script flag of -> $argument"
         printtxt $WHITE "Use the 'help' flag to get more information about script flags."
@@ -118,9 +123,11 @@ printtxt $BLUE "Installing htop"
 sudo apt install htop -y
 printdone
 
-printtxt $BLUE "Installing emacs"
-sudo apt install emacs -y
-printdone
+if [ $install_emacs -eq 1  ]; then
+    printtxt $BLUE "Installing emacs"
+    sudo apt install emacs -y
+    printdone
+fi
 
 
 if [ $install_brave -eq 1 ]; then
