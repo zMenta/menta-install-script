@@ -146,10 +146,10 @@ if [ $install_emacs -eq 1  ]; then
   #     where VERSION is the Emacs version number.
 
     cd ~/menta_install_script/emacs
-    wget https://ftp.gnu.org/gnu/emacs/emacs-28.1.tar.xz
-    tar -xf emacs-28.1.tar.xz
+    wget https://ftp.gnu.org/gnu/emacs/emacs-28.2.tar.xz
+    tar -xf emacs-28.2.tar.xz
 
-    cd emacs-28.1
+    cd emacs-28.2
 
     ./configure --with-json --with-native-compilation
     make
@@ -176,6 +176,7 @@ fi
 if [ $godot_config -eq 1 ]; then
     printtxt $BLUE "Started Godot Config"
     mkdir ~/godot
+    mkdir ~/godot/projects
     if grep -Fxq "$godot_bashrc" ~/.bashrc; then
         bashrc_log+=( "Godot configuration is already in ~/.bashrc" )
     else
