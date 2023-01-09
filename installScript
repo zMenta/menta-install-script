@@ -271,8 +271,8 @@ printtxt $GREEN "Script finished running. All done."
 
 if [ $install_doom_emacs -eq 1 ]; then
     echo "Before starting Doom emacs, don't forget to do this:"
-    printtxt $WHITE "1. To run 'doom sync' to apply the configuration in Doom emacs!"
-    printtxt $WHITE "2. Change the user-name in the config.el file."
+    printtxt $WHITE "1. To run 'doom sync' to apply the configuration in Doom emacs! (you may need to restart the terminal or source ./bashrc file to work the doom command.)"
+    printtxt $WHITE "2. Change the user-name in the doom emacs config.el file."
     printtxt $WHITE "3. Have fun!"
 fi
 
