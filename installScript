@@ -127,6 +127,10 @@ printtxt $BLUE "Installing htop"
 sudo apt install htop -y
 printdone
 
+printtxt $BLUE "Installing wget"
+sudo apt install wget -y
+printdone
+
 if [ $install_emacs -eq 1  ]; then
     printtxt $BLUE "Installing emacs"
 
