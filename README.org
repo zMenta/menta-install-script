@@ -111,5 +111,5 @@ List of software's this script downloads.
 + brave browser
 + OBS(Open broadcast software).
 + latex (texlive-full)
-+ nodeJs + revealjs
++ nodeJs + revealjs (optional)
 + rust programming language
