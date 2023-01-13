@@ -107,6 +107,7 @@ List of software's this script downloads.
 + fd-find
 + vim
 + htop
++ flameshot
 + emacs + doom emacs + my personal config files
 + brave browser
 + OBS(Open broadcast software).
