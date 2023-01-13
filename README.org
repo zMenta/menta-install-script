@@ -16,14 +16,20 @@ Execute the following commands, it will download the script and execute the scri
 *Warning*: The quick install will add a few configuration lines to the .bashrc file. If you don't want that, use the /no-bashrc-config/ flag
 
 
-Quick Install:
+*** *Debian Based Install:*
 #+BEGIN_SRC bash
 git clone --depth 1 https://github.com/zMenta/menta-install-script.git ~/menta_install_script
 bash ~/menta_install_script/debianInstall
 #+END_SRC
 
 
-Instead of using debianInstall you may use archInstall for arch based systems.(tested on EndeavourOS. Requires arch yay)
+*** *Arch Based Install:*
+Requires arch yay.
+#+BEGIN_SRC bash
+git clone --depth 1 https://github.com/zMenta/menta-install-script.git ~/menta_install_script
+bash ~/menta_install_script/archInstall
+#+END_SRC
+
 
 
 ** Flags
