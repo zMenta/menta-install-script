@@ -129,7 +129,7 @@ printtxt $BLUE "Installing fd"
 printdone
 
 printtxt $BLUE "Installing ripgrep"
-    yes | sudo pacman -S flameshot
+    yes | sudo pacman -S ripgrep
 printdone
 
 printtxt $BLUE "Installing vim"
