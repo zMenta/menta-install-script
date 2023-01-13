@@ -31,6 +31,7 @@ declare install_brave=1
 declare install_emacs=1
 declare install_obs=1
 declare i3_config=1
+declare install_aseprite=1
 
 # Bashrc related variables
 declare emacs_bashrc='alias emacs="emacsclient -c -a '"''"'"'
@@ -93,6 +94,9 @@ while [ "$#" -gt 0 ]; do
 
     elif [[ $argument == "no-i3-config"  ]]; then
         i3_config=0
+
+    elif [[ $argument == "no-aseprite"  ]]; then
+        install_aseprite=0
 
     else
         printtxt $RED "Invalid script flag of -> $argument"
@@ -200,6 +204,12 @@ if [ $install_rust -eq 1 ]; then
     printdone
 fi
 
+if [ $install_aseprite -eq 1 ]; then
+    printtxt $BLUE "Installing Rust"
+    yes | yay -S aseprite
+    printdone
+fi
+
 if [ $bashrc_config -eq 1 ]; then
     printtxt $BLUE "Applying bashrc config"
     if grep -Fxq "$emacs_bashrc" ~/.bashrc; then
@@ -230,7 +240,6 @@ if [ $install_doom_emacs -eq 1 ]; then
     printtxt $WHITE "2. Change the user-name in the doom emacs config.el file."
     printtxt $WHITE "3. Have fun!"
 fi
-
 echo ""
 echo "Enjoy yourself!"
 echo ""
