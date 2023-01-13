@@ -19,8 +19,12 @@ Execute the following commands, it will download the script and execute the scri
 Quick Install:
 #+BEGIN_SRC bash
 git clone --depth 1 https://github.com/zMenta/menta-install-script.git ~/menta_install_script
-bash ~/menta_install_script/installScript
+bash ~/menta_install_script/debianInstall
 #+END_SRC
+
+
+Instead of using debianInstall you may use archInstall for arch based systems.(tested on EndeavourOS. Requires arch yay)
+
 
 ** Flags
 Extra flags to customize the installation.
