@@ -1,0 +1,236 @@
+#!/bin/bash
+
+declare RED=1
+declare GREEN=2
+declare BLUE=4
+declare WHITE=7
+
+printtxt () {
+    local color=$1
+    local text=$2
+
+    echo
+    echo "$(tput setaf $color) $text $(tput setaf $WHITE)"
+}
+
+printdone () {
+
+    echo "$(tput setaf $GREEN) Done. $(tput setaf $WHITE)"
+    echo
+}
+
+# Flag variables
+# 1 == true
+declare install_latex=1
+declare install_doom_emacs=1
+declare install_doom_default=0
+declare godot_config=1
+declare bashrc_config=1
+declare install_rust=1
+declare install_brave=1
+declare install_emacs=1
+declare install_obs=1
+declare i3_config=1
+
+# Bashrc related variables
+declare emacs_bashrc='alias emacs="emacsclient -c -a '"''"'"'
+declare godot_bashrc='export PATH="$HOME/godot:$PATH"'
+declare doom_bashrc='export PATH="$HOME/.emacs.d/bin:$PATH"'
+
+declare bashrc_commands=()
+declare bashrc_log=("")
+
+# Cycle through the flags
+while [ "$#" -gt 0 ]; do
+    argument="$1"
+
+    if [[ $argument == "help" ]]; then
+        printtxt $BLUE "You called for help!"
+        echo "   Check the github page documentation for complete instructions and script flags."
+        echo ""
+        echo "Flags:"
+        printtxt $WHITE "Flag usage example -> bash installScript no-latex"
+        echo ""
+        echo "  1. help"
+        echo "  2. no-latex"
+        echo "  3. no-doom"
+        echo "  5. doom-default"
+        echo "  6. no-godot"
+        echo "  7. no-bashrc-config"
+        echo "  8. no-rust"
+        echo "  9. no-brave"
+        echo "  10. no-emacs"
+        echo "  11. no-obs"
+        echo ""
+        exit 1
+
+    elif [[ $argument == "no-latex"  ]]; then
+        install_latex=0
+
+    elif [[ $argument == "no-doom"  ]]; then
+        install_doom_emacs=0
+
+    elif [[ $argument == "doom-default"  ]]; then
+        install_doom_default=1
+
+    elif [[ $argument == "no-godot"  ]]; then
+        godot_config=0
+
+    elif [[ $argument == "no-bashrc-config"  ]]; then
+        bashrc_config=0
+
+    elif [[ $argument == "no-rust"  ]]; then
+        install_rust=0
+
+    elif [[ $argument == "no-brave"  ]]; then
+        install_brave=0
+
+    elif [[ $argument == "no-emacs"  ]]; then
+        install_emacs=0
+
+    elif [[ $argument == "no-obs"  ]]; then
+        install_obs=0
+
+    elif [[ $argument == "no-i3-config"  ]]; then
+        i3_config=0
+
+    else
+        printtxt $RED "Invalid script flag of -> $argument"
+        printtxt $WHITE "Use the 'help' flag to get more information about script flags."
+        echo " -> bash installScript help"
+        echo ""
+        # exit code 128 = Invalid argument to exit
+        exit 128
+    fi
+
+    shift
+done
+
+printtxt $Blue "Updating the system."
+    yes | sudo pacman -Syu
+printdone
+
+printtxt $Blue "Installing flameshot"
+    yes | sudo pacman -S flameshot
+printdone
+
+printtxt $Blue "Installing fd"
+    yes | sudo pacman -S fd
+printdone
+
+printtxt $Blue "Installing ripgrep"
+    yes | sudo pacman -S flameshot
+printdone
+
+printtxt $Blue "Installing vim"
+    yes | sudo pacman -S vim
+printdone
+
+if [ $install_emacs -eq 1 ]; then
+    yes | sudo pacman -S emacs-nativecomp
+fi
+
+if [ $install_brave -eq 1 ]; then
+    yes | yay -S brave-bin
+fi
+
+if [ $godot_config -eq 1 ]; then
+    printtxt $BLUE "Started Godot Config"
+    mkdir ~/godot
+    mkdir ~/godot/projects
+    if grep -Fxq "$godot_bashrc" ~/.bashrc; then
+        bashrc_log+=( "Godot configuration is already in ~/.bashrc" )
+    else
+        bashrc_log+=( "Inserted Godot configuration is ~/.bashrc" )
+        bashrc_commands+=("$godot_bashrc")
+    fi
+    printdone
+fi
+
+if [ $install_latex -eq 1 ]; then
+    printtxt $BLUE "Installing latex"
+    sudo pacman -S textlive-most
+    printdone
+fi
+
+if [ $install_obs -eq 1 ]; then
+    printtxt $BLUE "Installing OBS"
+    yes | sudo pacman -S obs-studio
+    printdone
+fi
+
+if [ $install_doom_emacs -eq 1 ]; then
+    printtxt $BLUE "Installing Doom Emacs"
+    git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
+    ~/.emacs.d/bin/doom install -!
+    if grep -Fxq "$doom_bashrc" ~/.bashrc; then
+        bashrc_log+=( "Doom emacs configuration is already in ~/.bashrc" )
+    else
+        bashrc_commands+=("$doom_bashrc")
+        bashrc_log+=( "Inserted Doom emacs configuration is ~/.bashrc" )
+    fi
+    printdone
+fi
+
+if [ $install_doom_default -eq 0 ] && [ $install_doom_emacs -eq 1 ]; then
+    printtxt $BLUE "Installing my doom config"
+    git clone --depth 1 https://github.com/zMenta/DoomEmacsConfig-and-More.git ~/menta_install_script/doom-config
+
+    # Copies the files from my config files repo to doom emacs config folder.
+    cp -r ~/menta_install_script/doom-config/DoomEmacs/snippets ~/.doom.d
+    cp ~/menta_install_script/doom-config/DoomEmacs/config.el ~/.doom.d/config.el
+    cp ~/menta_install_script/doom-config/DoomEmacs/init.el ~/.doom.d/init.el
+    cp ~/menta_install_script/doom-config/DoomEmacs/packages.el ~/.doom.d/packages.el
+    printdone
+fi
+
+if [ $i3_config -eq 1 ]; then
+    printtxt $BLUE "Applying i3 config"
+    git clone --depth 1 https://github.com/zMenta/DoomEmacsConfig-and-More.git ~/menta_install_script/doom-config
+
+    cp -r ~/menta_install_script/doom-config/i3wm/scripts ~/.config/i3
+    cp ~/menta_install_script/doom-config/i3wm/config ~/.config/i3/config
+    cp ~/menta_install_script/doom-config/i3wm/i3blocks.conf ~/.config/i3/i3blocks.conf
+    printdone
+fi
+
+if [ $install_rust -eq 1 ]; then
+    printtxt $BLUE "Installing Rust"
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    printdone
+fi
+
+if [ $bashrc_config -eq 1 ]; then
+    printtxt $BLUE "Applying bashrc config"
+    if grep -Fxq "$emacs_bashrc" ~/.bashrc; then
+        bashrc_log+=( "Emacs configuration is already in ~/.bashrc" )
+    else
+        bashrc_commands+=("$emacs_bashrc")
+        bashrc_log+=( "Inserted Emacs configuration is ~/.bashrc" )
+    fi
+
+    # Write the configs in the ~/.bashrc file
+    for config in "${bashrc_commands[@]}"; do
+        # sudo sed -i "4i\\$config" ~/.bashrc
+        sudo echo "$config" >> ~/.bashrc
+    done
+
+    #Print bashrc_log
+    for log in "${bashrc_log[@]}"; do
+        echo $log
+    done
+    printdone
+fi
+
+printtxt $GREEN "Script finished running. All done."
+
+if [ $install_doom_emacs -eq 1 ]; then
+    echo "Before starting Doom emacs, don't forget to do this:"
+    printtxt $WHITE "1. To run 'doom sync' to apply the configuration in Doom emacs! (you may need to restart the terminal or source ./bashrc file to work the doom command.)"
+    printtxt $WHITE "2. Change the user-name in the doom emacs config.el file."
+    printtxt $WHITE "3. Have fun!"
+fi
+
+echo ""
+echo "Enjoy yourself!"
+echo ""
