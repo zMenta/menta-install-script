@@ -24,6 +24,7 @@ printdone () {
 declare install_latex=1
 declare install_doom_emacs=1
 declare install_doom_default=0
+declare install_reveal_js=0
 declare godot_config=1
 declare bashrc_config=1
 declare install_rust=1
@@ -55,6 +56,7 @@ while [ "$#" -gt 0 ]; do
         echo "  1. help"
         echo "  2. no-latex"
         echo "  3. no-doom"
+        echo "  4. d-revealjs"
         echo "  5. doom-default"
         echo "  6. no-godot"
         echo "  7. no-bashrc-config"
@@ -62,6 +64,7 @@ while [ "$#" -gt 0 ]; do
         echo "  9. no-brave"
         echo "  10. no-emacs"
         echo "  11. no-obs"
+        echo "  12. no-aseprite"
         echo ""
         exit 1
 
@@ -79,6 +82,9 @@ while [ "$#" -gt 0 ]; do
 
     elif [[ $argument == "no-bashrc-config"  ]]; then
         bashrc_config=0
+
+    elif [[ $argument == "d-revealjs"  ]]; then
+        install_reveal_js=1
 
     elif [[ $argument == "no-rust"  ]]; then
         install_rust=0
@@ -110,23 +116,23 @@ while [ "$#" -gt 0 ]; do
     shift
 done
 
-printtxt $Blue "Updating the system."
+printtxt $BLUE "Updating the system."
     yes | sudo pacman -Syu
 printdone
 
-printtxt $Blue "Installing flameshot"
+printtxt $BLUE "Installing flameshot"
     yes | sudo pacman -S flameshot
 printdone
 
-printtxt $Blue "Installing fd"
+printtxt $BLUE "Installing fd"
     yes | sudo pacman -S fd
 printdone
 
-printtxt $Blue "Installing ripgrep"
+printtxt $BLUE "Installing ripgrep"
     yes | sudo pacman -S flameshot
 printdone
 
-printtxt $Blue "Installing vim"
+printtxt $BLUE "Installing vim"
     yes | sudo pacman -S vim
 printdone
 
@@ -148,6 +154,21 @@ if [ $godot_config -eq 1 ]; then
         bashrc_log+=( "Inserted Godot configuration is ~/.bashrc" )
         bashrc_commands+=("$godot_bashrc")
     fi
+    printdone
+fi
+
+if [ $install_reveal_js -eq 1 ]; then
+    printtxt $BLUE "Installing reveal.js"
+    # Reveal JS and Dependencies
+    # -NodeJs
+    curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
+    yes | sudo pacman -S nodejs
+
+
+    # -reveal js
+    git clone --depth 1 https://github.com/hakimel/reveal.js.git ~/.reveal.js
+    cd ~/.reveal.j && npm install
+    cd ~
     printdone
 fi
 
