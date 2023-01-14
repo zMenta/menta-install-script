@@ -136,6 +136,10 @@ printtxt $BLUE "Installing vim"
     yes | sudo pacman -S vim
 printdone
 
+printtxt $BLUE "Installing htop"
+    yes | sudo pacman -S htop
+printdone
+
 if [ $install_emacs -eq 1 ]; then
     yes | sudo pacman -S emacs-nativecomp
 fi
