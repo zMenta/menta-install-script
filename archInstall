@@ -174,7 +174,7 @@ fi
 
 if [ $install_latex -eq 1 ]; then
     printtxt $BLUE "Installing latex"
-    sudo pacman -S textlive-most
+    sudo pacman -S texlive-most
     printdone
 fi
 
