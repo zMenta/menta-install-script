@@ -213,9 +213,8 @@ if [ $i3_config -eq 1 ]; then
     printtxt $BLUE "Applying i3 config"
     git clone --depth 1 https://github.com/zMenta/DoomEmacsConfig-and-More.git ~/menta_install_script/doom-config
 
-    cp -r ~/menta_install_script/doom-config/i3wm/scripts ~/.config/i3
-    cp ~/menta_install_script/doom-config/i3wm/config ~/.config/i3/config
-    cp ~/menta_install_script/doom-config/i3wm/i3blocks.conf ~/.config/i3/i3blocks.conf
+    cp ~/menta_install_script/doom-config/endeavourOS_i3wm/config ~/.config/i3/config
+    cp ~/menta_install_script/doom-config/endeavourOS_i3wm/i3blocks.conf ~/.config/i3/i3blocks.conf
     printdone
 fi
 
