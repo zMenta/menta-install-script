@@ -198,7 +198,7 @@ fi
 
 if [ $install_doom_default -eq 0 ] && [ $install_doom_emacs -eq 1 ]; then
     printtxt $BLUE "Installing my doom config"
-    git clone --depth 1 https://github.com/zMenta/DoomEmacsConfig-and-More.git ~/menta_install_script/doom-config
+    git clone --depth 1 https://github.com/zMenta/config-files.git ~/menta_install_script/doom-config
 
     # Copies the files from my config files repo to doom emacs config folder.
     cp -r ~/menta_install_script/doom-config/DoomEmacs/snippets ~/.doom.d
@@ -210,7 +210,7 @@ fi
 
 if [ $i3_config -eq 1 ]; then
     printtxt $BLUE "Applying i3 config"
-    git clone --depth 1 https://github.com/zMenta/DoomEmacsConfig-and-More.git ~/menta_install_script/doom-config
+    git clone --depth 1 https://github.com/zMenta/config-files.git ~/menta_install_script/doom-config
 
     cp ~/menta_install_script/doom-config/endeavourOS_i3wm/config ~/.config/i3/config
     cp ~/menta_install_script/doom-config/endeavourOS_i3wm/i3blocks.conf ~/.config/i3/i3blocks.conf
